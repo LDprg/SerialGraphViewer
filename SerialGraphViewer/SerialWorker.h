@@ -23,5 +23,5 @@ private:
 	QString m_portName;
 	int m_waitTimeout = 0;
 
-	QSerialPort *serial;
+	QSerialPort* serial;
 };

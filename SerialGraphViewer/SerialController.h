@@ -18,6 +18,6 @@ signals:
 
 private:
 
-	QThread *workerThread;
-	SerialWorker *worker;
+	QThread* workerThread;
+	SerialWorker* worker;
 };

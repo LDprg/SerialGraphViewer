@@ -47,7 +47,15 @@ signals:
 
 private:
 	int index;
-	const QCPColorMap
+	const QColor Colors[7] = {
+		QColorConstants::Blue,
+		QColorConstants::Red,
+		QColorConstants::Green,
+		QColorConstants::Yellow,
+		QColorConstants::Cyan,
+		QColorConstants::Magenta,
+		QColorConstants::Black
+	};
 
 	QCustomPlot* plot;
 	QLabel* label;
