@@ -23,3 +23,12 @@ void SerialController::connectSerial(const QString& portName)
 {
 	emit operate(portName);
 }
+
+void SerialController::newPort(const QString& portname)
+{
+	workerThread->terminate();
+	workerThread->wait();
+	workerThread->start();
+
+	connectSerial(portname);
+}

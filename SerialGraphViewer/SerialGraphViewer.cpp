@@ -3,11 +3,26 @@
 SerialGraphViewer::SerialGraphViewer(QWidget* parent)
 	: QMainWindow(parent)
 {
-	dataInterface = new DataAcceptor();
-	graphInterface = new GraphDrawer();
-	serialInterface = new SerialController();
+	dataInterface = new DataAcceptor(this);
+	graphInterface = new GraphDrawer(this);
+	serialInterface = new SerialController(this);
 
 	ui.setupUi(this);
+
+	ui.cbCOM->addItem("COM1");
+	ui.cbCOM->addItem("COM2");
+	ui.cbCOM->addItem("COM3");
+	ui.cbCOM->addItem("COM4");
+	ui.cbCOM->addItem("COM5");
+	ui.cbCOM->addItem("COM6");
+	ui.cbCOM->addItem("COM7");
+	ui.cbCOM->addItem("COM8");
+	ui.cbCOM->addItem("COM9");
+	ui.cbCOM->addItem("COM10");
+	ui.cbCOM->addItem("COM11");
+	ui.cbCOM->addItem("COM12");
+	ui.cbCOM->addItem("COM13");
+	ui.cbCOM->addItem("COM14");
 
 	connect(ui.actionExit, &QAction::activate, this, &SerialGraphViewer::close);
 
@@ -23,7 +38,10 @@ SerialGraphViewer::SerialGraphViewer(QWidget* parent)
 
 	connect(serialInterface, &SerialController::newData, dataInterface, &DataAcceptor::addData);
 
-	serialInterface->connectSerial("COM2");
+
+	connect(ui.cbCOM, QOverload<const QString&>::of(&QComboBox::activated), serialInterface, &SerialController::newPort);
+
+	//serialInterface->connectSerial("COM2");
 
 	//graphInterface->demo();
 	//dataInterface->addData("0,0,0,0");

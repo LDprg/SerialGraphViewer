@@ -16,6 +16,9 @@ signals:
 
 	void operate(QString portName);
 
+public slots:
+	void newPort(const QString &portname);
+
 private:
 
 	QThread* workerThread;
